@@ -7,12 +7,11 @@ const FRAME_RATE = 60;
 
 let leftScore = 0;
 let rightScore = 0;
-
 let chaossMode = false;
 
 function setup() {
   frameRate(FRAME_RATE);
-  createCanvas(1280, 768).parent("sketch-container");
+  createCanvas(1280, 720).parent("sketch-container");
   setupGame();
 }
 
@@ -23,12 +22,11 @@ function draw() {
 
   textSize(40);
   textAlign(CENTER);
-  text(`Score ${leftScore} : ${rightScore}`, width / 2, height);
+
+  text(`${chaossMode ? "Chaoss |" : ""} Score ${leftScore} : ${rightScore}`, width / 2, height);
 
   if (gameOver) {
-    textSize(40);
-    textAlign(CENTER);
-    text("Game Over", width / 2, height / 2);
+    text("Score!", width / 2, height / 2);
     noLoop();
   }
 }
@@ -44,9 +42,9 @@ function keyPressed() {
   if (gameOver && keyCode === 32) {
     setupGame();
   }
-}
 
-// wrapper for p5 dist()
-function distance(pos1, pos2) {
-  return dist(pos1.x, pos1.y, pos2.x, pos2.y);
+  // 79 -> "O"
+  if (keyCode === 79) {
+    chaossMode = !chaossMode;
+  }
 }

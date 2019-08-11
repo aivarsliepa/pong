@@ -3,9 +3,9 @@ class Ball {
    *
    * @param {Game} game
    */
-  constructor(game, isLeft = false) {
+  constructor(game) {
     this.game = game;
-    this.r = 25;
+    this.r = 20;
     this.position = createVector(width / 2, height / 2);
     this.velocity = createVector(7, 7);
 
@@ -17,7 +17,6 @@ class Ball {
   draw() {
     fill("#fff");
     circle(this.position.x, this.position.y, this.r * 2);
-    // rect(this.position.x, this.position.y, this.r * 2, this.r * 2, 25);
   }
 
   update() {
@@ -37,6 +36,7 @@ class Ball {
       leftScore++;
     }
 
+    // for some unpredicted fun :)
     if (chaossMode) {
       if (random(1) < 0.001) {
         this.velocity.set(-this.velocity.x, -this.velocity.y);

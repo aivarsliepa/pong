@@ -14,7 +14,6 @@ class Player {
 
   draw() {
     fill("#fff");
-    // circle(this.x, this.y, this.r * 2);
     rect(this.x, this.y, this.width, this.height);
   }
 
